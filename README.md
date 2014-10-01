@@ -87,15 +87,27 @@ Ej: DBTools 'ACPU',NULL,NULL,NULL,NULL,50
 
 
 [ACPU] -> Representa uso promedio de CPU (Average CPU Usage).
+
 [TCPU] -> Representa uso total de CPU (Total CPU usage).
+
 [AE]   -> Representa tiempo promedio transcurrido (Average Elapsed Time).
+
 [TE]   -> Representa tiempo total transcurrido(Total Elapsed Time).
+
 [EC]   -> Representa numero de ejecuciones (Execution Count).
+
 [AIO]  -> Representa IO promedio(Average IOs).  
+
 [TIO]  -> Representa IO Total (Total IOs). 
+
 [ALR]  -> Representa lecturas logicas promedio (Average Logical Reads).
-[TLR]  -> Representa lecturas logicas totales (Total Logical Reads).  
+
+[TLR]  -> Representa lecturas logicas totales (Total Logical Reads). 
+
 [ALW]  -> Representa escrituras promedio totales (Average Logical Writes).
+
 [TLW]  -> Representa total de escrituras logicas (Total Logical Writes).
+
 [APR]  -> Representa promedio de lectura fisicas (Average Physical Reads).
+
 [TPR]  -> Representa total de lecturas fisicas (Total Physical Read).
