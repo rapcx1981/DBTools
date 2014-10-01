@@ -6,28 +6,32 @@ SQL Server store procedure con diversas consultas útiles.
 PARAMETROS:
 -----------
 
-@Opcion CHAR(4),				        --> Accion a ejecutar
-@TMP NVARCHAR(MAX)=NULL,		    --> Usos multiples, su sintaxis varia acorde a la @Opcion que se elija.
-@BaseDeDatos NVARCHAR(50)=NULL,	--> Indica la base de datos sobre la que se ejecutara la consulta. Si no se indica ninguno toma el actual. 
-@Esquema CHAR(3)=NULL,	        --> Indica el esquema sobre la que se ejecutara la consulta. Si no se indica ninguno toma el actual.
-@Tabla NVARCHAR(100)=NULL,	    --> Solo para la opcion [GI]
-@N SMALLINT=10,	                --> Multiples usos, habitualmente indica el TOP maximo de resultados a mostrar dependiendo la opcion.
-@Print BIT=0		                --> Indica si se requiere ver los querys dinamicos(1=Si | 0=No). 
+@Opcion		--> Accion a ejecutar
+@TMP 		--> Usos multiples, su sintaxis varia acorde a la @Opcion que se elija.
+@BaseDeDatos 	--> Indica la base de datos sobre la que se ejecutara la consulta. Si no se indica ninguno toma el actual. 
+@Esquema 	--> Indica el esquema sobre la que se ejecutara la consulta. Si no se indica ninguno toma el actual.
+@Tabla		--> Solo para la opcion [GI]
+@N		--> Multiples usos, habitualmente indica el TOP maximo de resultados a mostrar dependiendo la opcion.
+@Print		--> Indica si se requiere ver los querys dinamicos(1=Si | 0=No). 
 
 OPCIONES Y SINTAXIS:
 --------------------
 
 --[H]	 ->	Mostrar texto de procedimientos almacenados, trigers y funciones. 
+          
           Ej: DBTools 'H','DBTools'
           
 --[R]	 ->	Buscar referencias de un texto en procedimientos almacenados, trigers y funciones. 
+          
           Ej: DBTools 'R','rapcx1981'	 
           
 --[T]  ->	Buscar tablas que contengan un campo con el texto proporcionado. 
+          
           Ej: DBTools 'T','Orders'
 
 --[ET] -> Muestra el esquema de la tabla (campos, tipo de datos, longitud). 
-            Ej: DBTools 'ET','FactCallCenter'
+           
+          Ej: DBTools 'ET','FactCallCenter'
 
 --[GI] -> Generar inserts condicionados. En @TMP van las condiciones que corresponderian al WHERE. Se ignora el WHERE ya que se a incluido como fijo
 			   'WHERE 1=1' en caso de que se quieran generar toda la tabla. Para ingresar las condiciones hay que tomar en cuenta lo siguiente:
@@ -40,16 +44,20 @@ OPCIONES Y SINTAXIS:
 				      DBTools 'GI','AND FactCallCenterID>5',NULL,NULL,'FactCallCenter'		
 
 --[PE] -> Muestra plan de ejecucion, toma como valor el campo <plan_handle> 
+          
           Ej: DBTools 'PE','0x05000E0055685A0340C1BF82010000000000000000000000'
 
 --[RD] -> Buscar Registros duplicados. El formato para ingresar es: '<campo1>,<campo2>,<campoN> FROM <tabla>' 
+          
           Ej: DBTools 'RD','FinanceKey,Amount FROM FactFinance'
 
 --[XML]-> Regresar valores de consulta con formato XML. Si se requiere datos en particular se ingresa la consulta si es toda la tabal solo el nombre de la tabla. 
-			    Ej: DBTools 'XML','FactCallCenter'  
-				      DBTools 'XML','SELECT * FROM FactCallCenter WHERE FactCallCenterID>5 ' 
+			   
+			   Ej: DBTools 'XML','FactCallCenter'  
+			       DBTools 'XML','SELECT * FROM FactCallCenter WHERE FactCallCenterID>5 ' 
 
 --[UUP]-> Muestra el TOP @N de las tablas a las que se les ejecuto UPDATE. 
+          
           Ej: DBTools 'UUP',NULL,NULL,NULL,NULL,25 
   				    DBTools 'UPP'
 
@@ -58,6 +66,7 @@ OPCIONES Y SINTAXIS:
 --[UOM]-> Lista de los ultimos objetos modificados en los ultimos "X" (@N) dias.
 
 --[BTT]-> Busca un texto dentro de todas las tablas de la base de datos. 
+			    
 			    -Si se buscara el texto en todas las tablas:
 					  Ej: DBTools 'BTT','<Texto a Buscar>'	Ej: DBTools 'BTT','A Bike Store'
 						
